@@ -3,7 +3,15 @@ const { MongoClient, ObjectId } = require('mongodb');
 
 const app = express();
 const sessionRouter = express.Router();
+sessionRouter.use((req, res, next) => {
+    if (req.user) {
+        next();
 
+    }
+    else {
+        res.redirect('/auth/signin');
+    }
+})
 
 sessionRouter.route('/').get((req, res) => {
     const url = 'mongodb+srv://alireza21heidari:gVJ9FWGiyJxsab0n@globalmantics.vs6s6za.mongodb.net/?retryWrites=true&w=majority&appName=Globalmantics';

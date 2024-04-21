@@ -36,7 +36,7 @@ authRouter.route('/signUp').post((req, res) => {
 });
 
 authRouter.route('/signIn').get((req, res)=> {
-    res.render(signIn)
+    res.render('singin')
 }).post(passport.authenticate('local', {
     successRedirect: '/auth/profile',
     failureMessage: '/'
